@@ -3,7 +3,7 @@
 
 #       The makeCacheMatrix function creates a special matrix object
 #       to cache the input matrix and its inverse (if it has been provided by 
-#       cachesolve). It provides/returns a list of functions (used to
+#       cacheSolve). It provides/returns a list of functions (used to
 #       store and retrieve these matrices from cache).
 
 #       The cacheSolve function first checks to see if the inverse matrix 
@@ -46,7 +46,8 @@ makeCacheMatrix <- function(x = matrix()) {             #0 input matrix (x)
 
 #If it has not already been calculated, function cacheSolve calculates the inverse
 #of the matrix object (x) from makeCasheMatrix and gets makeCasheMatrix to cache 
-#the value of this inverse matrix.... and then returns the inverse matrix.
+#the value of this inverse matrix.... and then returns the inverse matrix. If the 
+#inverse has already been calculated cacheSolve just retrieves that and returns it.
 
 cacheSolve <- function(x, ...) {
         
@@ -57,7 +58,7 @@ cacheSolve <- function(x, ...) {
                 return(m)
         }
         
-        data <- x$get()        #if m null get stored input matrix  
+        data <- x$get()        #if m is null, get the stored input matrix,  
         m <- solve(data, ...)  #calculate its inverse
         x$setinverse(m)        #and store that in cache together with original matrix.
         m               ## Return a matrix that is the inverse of 'x'
