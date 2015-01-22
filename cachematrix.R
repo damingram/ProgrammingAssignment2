@@ -23,9 +23,9 @@
 
 makeCacheMatrix <- function(x = matrix()) {             #0 input matrix (x)
         
-        im <- NULL
-        set <- function(y) {  #1 set the value of the input matrix in cache
-                x <<- y       #  and m to null
+        m <- NULL
+        set <- function(y) {  #1 set the values of the matrix object in cache
+                x <<- y       
                 m <<- NULL
         }
         
@@ -52,7 +52,7 @@ makeCacheMatrix <- function(x = matrix()) {             #0 input matrix (x)
 cacheSolve <- function(x, ...) {
         
         m <- x$getinverse()                       #get inverse from cache 
-                                                  #and if not null returns it
+                                                  #and if not null return it
         if(!is.null(m)) {
                 message("getting cached data")
                 return(m)
